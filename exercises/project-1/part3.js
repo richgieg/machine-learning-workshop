@@ -3,7 +3,7 @@ import "@tensorflow/tfjs";
 import "@tensorflow/tfjs-core";
 import "@tensorflow/tfjs-backend-webgl";
 import * as faceDetection from "@tensorflow-models/face-detection";
-import { startWebcam, takePicture } from "./utils";
+import { drawFaceBox, startWebcam, takePicture } from "./utils";
 
 const webcamButton = document.getElementById("webcam");
 const captureButton = document.getElementById("pause");
@@ -26,6 +26,7 @@ const predict = async (photo) => {
         flipHorizontal: false,
     });
     console.log(faces);
+    drawFaceBox(photo, faces);
 };
 
 init();
